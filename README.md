@@ -1,5 +1,6 @@
 # yorha - home server
 
-## TODO:
-- fix all the volumes of Starr programs
-- be better
+##  Usage
+
+- edit `services` file and disable unneeded files
+- use the `yorha` script

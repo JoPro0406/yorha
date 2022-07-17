@@ -1,0 +1,45 @@
+#!/bin/sh
+
+YORHA_DIR=${YORHA_DIR:-$(dirname "$0")}
+echo "YORHA_DIR: $YORHA_DIR"
+
+get_services() {
+	services=$(sed -r 's/#//' "$YORHA_DIR/services")
+}
+
+get_enabled_services() {
+	enabled_services=$(sed -r '/#.*$/d' "$YORHA_DIR/services")
+}
+
+enable_service() {
+    service=$1
+	cd "$YORHA_DIR/$service"
+	docker compose up -d
+}
+
+disable_service() {
+    service=$1
+	cd "$YORHA_DIR/$service"
+	docker-compose down
+}
+
+case "$1" in
+    start)
+        get_enabled_services
+        for service in $enabled_services; do
+			disable_service "$service"
+			enable_service "$service"
+        done
+        ;;
+    stop)
+		get_services
+		echo $services
+        for service in $services; do
+			disable_service "$service"
+        done
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
