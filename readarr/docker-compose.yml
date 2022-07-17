@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    readarr:
+        container_name: readarr
+        image: linuxserver/readarr:develop
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/London
+        volumes:
+            - ./config:/config
+            - ./books:/books
+            - ./downloads:/downloads
+        ports:
+            - 8787:8787
+        restart: unless-stopped
