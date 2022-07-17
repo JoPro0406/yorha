@@ -21,7 +21,7 @@ enable_service() {
 disable_service() {
     service=$1
 	cd "$YORHA_DIR/$service"
-	docker-compose down
+	docker compose down
 }
 
 case "$1" in
