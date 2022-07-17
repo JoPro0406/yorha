@@ -1,6 +1,7 @@
 #!/bin/sh
 
-YORHA_DIR=${YORHA_DIR:-$(dirname "$0")}
+_PWD=${PWD}
+YORHA_DIR=${YORHA_DIR:-$(cd $(dirname "$0") && pwd)}
 echo "YORHA_DIR: $YORHA_DIR"
 
 get_services() {
@@ -30,6 +31,7 @@ case "$1" in
 			disable_service "$service"
 			enable_service "$service"
         done
+		cd $_PWD
         ;;
     stop)
 		get_services
@@ -37,6 +39,7 @@ case "$1" in
         for service in $services; do
 			disable_service "$service"
         done
+		cd $_PWD
         ;;
     *)
         echo "Usage: $0 {start|stop}"
