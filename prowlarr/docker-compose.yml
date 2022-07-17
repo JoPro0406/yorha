@@ -9,7 +9,7 @@ services:
             - PGID=1000
             - TZ=Europe/Berlin
         volumes:
-            - ./config:/config
+            - /docker/appdata/prowlarr:/config
         ports:
             - 9696:9696
         restart: unless-stopped

@@ -5,8 +5,8 @@ services:
         container_name: adguardhome
         image: adguard/adguardhome
         volumes:
-            - ./work:/opt/adguardhome/work
-            - ./conf:/opt/adguardhome/conf
+            - /docker/appdata/adguardhome/work:/opt/adguardhome/work
+            - /docker/appdata/adguardhome/conf:/opt/adguardhome/conf
         ports:
             - 53:53/tcp
             - 53:53/udp

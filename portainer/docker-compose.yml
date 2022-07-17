@@ -6,6 +6,6 @@ services:
         image: portainer/portainer-ce:latest
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock:z
-            - ./data:/data
+            - /docker/appdata/portainer:/data
         ports:
             - 9000:9000

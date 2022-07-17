@@ -9,9 +9,8 @@ services:
             - PGID=1000
             - TZ=Europe/London
         volumes:
-            - ./config:/config
-            - ./music:/music
-            - ./downloads:/downloads
+            - /docker/appdata/lidarr:/config
+            - /data:/data
         ports:
             - 8686:8686
         restart: unless-stopped

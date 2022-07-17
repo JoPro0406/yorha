@@ -9,9 +9,8 @@ services:
             - PGID=1000
             - TZ=Europe/Berlin
         volumes:
-            - ./config:/config
-            - ./tv:/tv
-            - ./downloads:/downloads
+            - /docker/appdata/sonarr:/config
+            - /data:/data
         ports:
             - 8989:8989
         restart: unless-stopped

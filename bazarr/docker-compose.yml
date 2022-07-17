@@ -9,9 +9,8 @@ services:
             - PGID=1000
             - TZ=Europe/London
         volumes:
-            - ./config:/config
-            - ./movies:/movies
-            - ./tv:/tv
+            - /docker/appdata/bazarr:/config
+            - /data/media:/data/media
         ports:
             - 6767:6767
         restart: unless-stopped

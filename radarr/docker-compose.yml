@@ -9,9 +9,8 @@ services:
             - PGID=1000
             - TZ=Europe/Berlin
         volumes:
-            - ./config:/config
-            - ./movies:/movies
-            - ./downloads:/downloads
+            - /docker/appdata/radarr:/config
+            - /data:/data
         ports:
             - 7878:7878
         restart: unless-stopped
